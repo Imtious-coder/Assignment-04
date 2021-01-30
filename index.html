@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 
 <body>
@@ -48,7 +49,7 @@
             </div>
             <div class="inputs">
                 <div class="input-group">
-                    <label " for=" ">Departure</label>
+                    <label for=" ">Departure</label>
                     <input class="inp-style " type="date " name=" ">
                 </div>
                 <div class="input-group ">
@@ -57,22 +58,28 @@
                 </div>
             </div>
             <div class="input-group f-class ">
+                <div class="plus-minus-btn">
+                    <p><span id="minusButton" class="btn btn-danger btn-sm">-</span></p>
+                </div>
                 <div>
                     <label for=" ">First Class ($150)</label>
-                    <input class="inp-style inp-width " type="number " name=" ">
+                    <input id="ticketQuantity" class=" inp-width text-center " value="0">
                 </div>
-                <div class="plus-minus-btn ">
-                    <p>+ -</p>
+                <div class="plus-minus-btn">
+                    <p><span id="plusButton" class="btn btn-success btn-sm">+</span></p>
                 </div>
             </div>
-            
+
             <div class="input-group f-class ">
+                <div class="plus-minus-btn">
+                    <p><span id="plusButton" class="btn btn-success btn-sm">+</span></p>
+                </div>
                 <div>
                     <label for=" ">Economy ($100)</label>
                     <input class="inp-style inp-width " type="number " name=" ">
                 </div>
-                <div class="plus-minus-btn ">
-                    <p> <span>+</span> <span>-</span> </p>
+                <div class="plus-minus-btn">
+                    <p><span id="minusButton" class="btn btn-danger btn-sm">-</span></p>
                 </div>
             </div>
             <div class="calculations ">
@@ -81,7 +88,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right ">
-                        <p>$500</p>
+                        <p id="subtotal">$<span>0</span></p>
                     </div>
                 </div>
 
@@ -90,7 +97,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right ">
-                        <p>$50</p>
+                        <p>$<span id="vat">0</span></p>
                     </div>
                 </div>
                 <hr>
@@ -99,7 +106,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right ">
-                        <p>$550</p>
+                        <p>$<span id="totalPayment">0</span></p>
                     </div>
                 </div>
             </div>
@@ -110,7 +117,62 @@
     <!--Thank You-->
 
 
-    
+
+
+    <script>
+        const plusButton = document.getElementById("plusButton");
+        plusButton.addEventListener("click", function() {
+            const ticketQuantity = document.getElementById("ticketQuantity").value;
+            const ticketQuantityNumber = parseFloat(ticketQuantity);
+            const ticketIncrease = ticketQuantityNumber + 1;
+            const subtotal = document.getElementById("subtotal").innerHTML;
+            const subtotalNumber = parseFloat(subtotal);
+            const subtotalIncrease = ticketIncrease * 150;
+            const vat = document.getElementById("vat").innerHTML;
+            const vatNumber = parseFloat(vat);
+            const totalVatIncrease = (subtotalIncrease / 100) * 10;
+            const totalPayment = document.getElementById("totalPayment").innerHTML;
+            const totalPaymentNumber = parseFloat(totalPayment);
+            const finalPayment = subtotalIncrease + totalVatIncrease;
+
+
+            document.getElementById("ticketQuantity").value = ticketIncrease;
+            document.getElementById("subtotal").innerHTML = subtotalIncrease;
+            document.getElementById("vat").innerHTML = totalVatIncrease;
+            document.getElementById("totalPayment").innerHTML = finalPayment;
+        });
+
+        const minusButton = document.getElementById("minusButton");
+        minusButton.addEventListener("click", function() {
+            const ticketQuantity = document.getElementById("ticketQuantity").value;
+            const ticketQuantityNumber = parseFloat(ticketQuantity);
+            const ticketDecrease = ticketQuantityNumber - 1;
+            if (ticketDecrease < 0) {
+                return 0;
+            }
+            const subtotalDecrease = ticketDecrease * 150;
+            const vat = document.getElementById("vat").innerHTML;
+            const vatNumber = parseFloat(vat);
+            const totalVatDecrease = (subtotalDecrease / 100) * 10;
+            const totalPayment = document.getElementById("totalPayment").innerHTML;
+            const totalPaymentNumber = parseFloat(totalPayment);
+            const finalPayment = subtotalDecrease + totalVatDecrease;
+
+            document.getElementById("ticketQuantity").value = ticketDecrease;
+            document.getElementById("subtotal").innerHTML = subtotalDecrease;
+            document.getElementById("vat").innerHTML = totalVatDecrease;
+            document.getElementById("totalPayment").innerHTML = finalPayment;
+
+        });
+    </script>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>
