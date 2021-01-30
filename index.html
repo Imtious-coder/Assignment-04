@@ -50,11 +50,11 @@
             <div class="inputs">
                 <div class="input-group">
                     <label for=" ">Departure</label>
-                    <input class="inp-style " type="date " name=" ">
+                    <input class="inp-style " type="date " name=" " placeholder="4th, February. 11:30am.">
                 </div>
                 <div class="input-group ">
                     <label for=" ">Return</label>
-                    <input class="inp-style " type="date " name=" ">
+                    <input class="inp-style " type="date " name=" " placeholder="21st, February. 6:40pm.">
                 </div>
             </div>
             <div class="input-group f-class ">
@@ -113,19 +113,12 @@
             <button id="bookNowButton" class="btn-style ">Book Now</button>
         </div>
 
-        <div id="confirmMassege" class="booking-form" style="display: none; margin-top: 150px; background-color: rgb(255, 255, 255);">
-            <p class="text-center" style="line-height: 25px; font-weight: bold; font-size: 18px;">Ticket <span style="color: green; font-size: 20px;">"Confirmed"<br><br> </span> <span style="color: blue;">Dhaka to New York.</span> <span style="color: rgb(72, 110, 0);"><br>"First Class at, <br>4th, February. 11:30am.</span>
-                <br><br><span style="color: red; font-size: 24px;">Enjoy Dude,</span></p>
-        </div>
+
     </main>
 
-    <!--Thank You-->
-
-
-
-
+    <!-- Js Stated -->
     <script>
-        let subtotalIncrease = 0;
+        // First Class..
         const plusButton = document.getElementById("plusButton");
         plusButton.addEventListener("click", function() {
             const ticketQuantity = document.getElementById("ticketQuantity").value;
@@ -140,7 +133,6 @@
             const totalPayment = document.getElementById("totalPayment").innerHTML;
             const totalPaymentNumber = parseFloat(totalPayment);
             const finalPayment = subtotalIncrease + totalVatIncrease;
-
 
             document.getElementById("ticketQuantity").value = ticketIncrease;
             document.getElementById("subtotal").innerHTML = subtotalIncrease;
@@ -168,19 +160,17 @@
             document.getElementById("subtotal").innerHTML = subtotalDecrease;
             document.getElementById("vat").innerHTML = totalVatDecrease;
             document.getElementById("totalPayment").innerHTML = finalPayment;
-
         });
 
 
 
 
-
+        // Economy Class..
         const plusButton2 = document.getElementById("plusButton2");
         plusButton2.addEventListener("click", function() {
             const ticketQuantity2 = document.getElementById("ticketQuantity2").value;
             const ticketQuantityNumber2 = parseFloat(ticketQuantity2);
             const ticketIncrease2 = ticketQuantityNumber2 + 1;
-
             const subtotal = document.getElementById("subtotal").innerHTML;
             const subtotalNumber = parseFloat(subtotal);
             const subtotalIncrease2 = ticketIncrease2 * 100;
@@ -190,8 +180,6 @@
             const totalPayment2 = document.getElementById("totalPayment").innerHTML;
             const totalPaymentNumber = parseFloat(totalPayment2);
             const finalPayment2 = (subtotalIncrease2 + totalVatIncrease2);
-
-
 
             document.getElementById("subtotal").innerHTML = subtotalIncrease2;
             document.getElementById("ticketQuantity2").value = ticketIncrease2;
@@ -217,13 +205,20 @@
             const totalPaymentNumber2 = parseFloat(totalPayment2);
             const finalPayment2 = subtotalDecrease2 + totalVatDecrease2;
 
-
             document.getElementById("ticketQuantity2").value = ticketDecrease2;
             document.getElementById("subtotal").innerHTML = subtotalDecrease2;
             document.getElementById("vat").innerHTML = totalVatDecrease2;
             document.getElementById("totalPayment").innerHTML = finalPayment2;
         });
+
+        // Extra Function Added...Confiremd Message
+        const bookNowButton = document.getElementById("bookNowButton");
+        bookNowButton.addEventListener("click", function() {
+            const form = document.getElementById("form").style.display = "None";
+            const confirmMessage = document.getElementById("confirmMessage").style.display = "Block";
+        });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
