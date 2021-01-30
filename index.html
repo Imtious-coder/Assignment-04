@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curise Booking</title>
+    <title>Curise Booking(Assignment-04)</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -135,7 +135,7 @@
             const totalVatIncrease = (subtotalIncrease / 100) * 10;
             const totalPayment = document.getElementById("totalPayment").innerHTML;
             const totalPaymentNumber = parseFloat(totalPayment);
-            const finalPayment = subtotalIncrease + totalVatIncrease;
+            const finalPayment = subtotalIncrease + totalVatIncrease + totalPaymentNumber;
 
             document.getElementById("ticketQuantity").value = ticketIncrease;
             document.getElementById("subtotal").innerHTML = subtotalIncrease;
@@ -157,7 +157,7 @@
             const totalVatDecrease = (subtotalDecrease / 100) * 10;
             const totalPayment = document.getElementById("totalPayment").innerHTML;
             const totalPaymentNumber = parseFloat(totalPayment);
-            const finalPayment = subtotalDecrease + totalVatDecrease;
+            const finalPayment = subtotalDecrease + totalVatDecrease + totalPaymentNumber;
 
             document.getElementById("ticketQuantity").value = ticketDecrease;
             document.getElementById("subtotal").innerHTML = subtotalDecrease;
@@ -182,7 +182,7 @@
             const totalVatIncrease2 = (subtotalIncrease2 / 100) * 10;
             const totalPayment2 = document.getElementById("totalPayment").innerHTML;
             const totalPaymentNumber = parseFloat(totalPayment2);
-            const finalPayment2 = (subtotalIncrease2 + totalVatIncrease2);
+            const finalPayment2 = subtotalIncrease2 + totalVatIncrease2 + totalPaymentNumber;
 
             document.getElementById("subtotal").innerHTML = subtotalIncrease2;
             document.getElementById("ticketQuantity2").value = ticketIncrease2;
@@ -205,14 +205,15 @@
             const vatNumber = parseFloat(vat);
             const totalVatDecrease2 = (subtotalDecrease2 / 100) * 10;
             const totalPayment2 = document.getElementById("totalPayment").innerHTML;
-            const totalPaymentNumber2 = parseFloat(totalPayment2);
-            const finalPayment2 = subtotalDecrease2 + totalVatDecrease2;
+            const totalPaymentNumber = parseFloat(totalPayment2);
+            const finalPayment2 = subtotalDecrease2 + totalVatDecrease2 + totalPaymentNumber;
 
             document.getElementById("ticketQuantity2").value = ticketDecrease2;
             document.getElementById("subtotal").innerHTML = subtotalDecrease2;
             document.getElementById("vat").innerHTML = totalVatDecrease2;
             document.getElementById("totalPayment").innerHTML = finalPayment2;
         });
+
 
         // Extra Function Added...Confiremd Message
         const bookNowButton = document.getElementById("bookNowButton");
