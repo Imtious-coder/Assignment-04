@@ -18,10 +18,10 @@
     <header class="container">
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a class="active" href="#">Sign Up</a></li>
+                <li><a href="#" class="pageLinks">Home</a></li>
+                <li><a href="#" class="pageLinks">About Us</a></li>
+                <li><a href="#" class="pageLinks">Contact</a></li>
+                <li><a class="active pageLinks" href="#">Sign Up</a></li>
             </ul>
         </nav>
     </header>
@@ -37,14 +37,14 @@
         </div>
 
 
-        <div class="booking-form">
+        <div id="form" class="booking-form">
             <h3>Book Ocean Time</h3>
             <div class="input-group">
-                <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                <label for="">Traveling From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
-                <label for="">Flying To</label>
+                <label for="">Traveling To</label>
                 <input class="inp-style" type="text" name="" placeholder="New York, United States">
             </div>
             <div class="inputs">
@@ -59,27 +59,27 @@
             </div>
             <div class="input-group f-class ">
                 <div class="plus-minus-btn">
-                    <p><span id="minusButton" class="btn btn-danger btn-sm">-</span></p>
+                    <p><span id="minusButton" class="btn btn-danger">-</span></p>
                 </div>
                 <div>
                     <label for=" ">First Class ($150)</label>
-                    <input id="ticketQuantity" class=" inp-width text-center " value="0">
+                    <input id="ticketQuantity" class=" inp-width" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p><span id="plusButton" class="btn btn-success btn-sm">+</span></p>
+                    <p><span id="plusButton" class="btn btn-success">+</span></p>
                 </div>
             </div>
 
             <div class="input-group f-class ">
                 <div class="plus-minus-btn">
-                    <p><span id="plusButton" class="btn btn-success btn-sm">+</span></p>
+                    <p><span id="minusButton2" class="btn btn-danger">-</span></p>
                 </div>
                 <div>
                     <label for=" ">Economy ($100)</label>
-                    <input class="inp-style inp-width " type="number " name=" ">
+                    <input id="ticketQuantity2" class="inp-width " value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p><span id="minusButton" class="btn btn-danger btn-sm">-</span></p>
+                    <p><span id="plusButton2" class="btn btn-success">+</span></p>
                 </div>
             </div>
             <div class="calculations ">
@@ -110,7 +110,12 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style ">Book Now</button>
+            <button id="bookNowButton" class="btn-style ">Book Now</button>
+        </div>
+
+        <div id="confirmMassege" class="booking-form" style="display: none; margin-top: 150px; background-color: rgb(255, 255, 255);">
+            <p class="text-center" style="line-height: 25px; font-weight: bold; font-size: 18px;">Ticket <span style="color: green; font-size: 20px;">"Confirmed"<br><br> </span> <span style="color: blue;">Dhaka to New York.</span> <span style="color: rgb(72, 110, 0);"><br>"First Class at, <br>4th, February. 11:30am.</span>
+                <br><br><span style="color: red; font-size: 24px;">Enjoy Dude,</span></p>
         </div>
     </main>
 
@@ -120,6 +125,7 @@
 
 
     <script>
+        let subtotalIncrease = 0;
         const plusButton = document.getElementById("plusButton");
         plusButton.addEventListener("click", function() {
             const ticketQuantity = document.getElementById("ticketQuantity").value;
@@ -164,14 +170,60 @@
             document.getElementById("totalPayment").innerHTML = finalPayment;
 
         });
+
+
+
+
+
+        const plusButton2 = document.getElementById("plusButton2");
+        plusButton2.addEventListener("click", function() {
+            const ticketQuantity2 = document.getElementById("ticketQuantity2").value;
+            const ticketQuantityNumber2 = parseFloat(ticketQuantity2);
+            const ticketIncrease2 = ticketQuantityNumber2 + 1;
+
+            const subtotal = document.getElementById("subtotal").innerHTML;
+            const subtotalNumber = parseFloat(subtotal);
+            const subtotalIncrease2 = ticketIncrease2 * 100;
+            const vat = document.getElementById("vat").innerHTML;
+            const vatNumber = parseFloat(vat);
+            const totalVatIncrease2 = (subtotalIncrease2 / 100) * 10;
+            const totalPayment2 = document.getElementById("totalPayment").innerHTML;
+            const totalPaymentNumber = parseFloat(totalPayment2);
+            const finalPayment2 = (subtotalIncrease2 + totalVatIncrease2);
+
+
+
+            document.getElementById("subtotal").innerHTML = subtotalIncrease2;
+            document.getElementById("ticketQuantity2").value = ticketIncrease2;
+            document.getElementById("vat").innerHTML = totalVatIncrease2;
+            document.getElementById("totalPayment").innerHTML = finalPayment2;
+        });
+
+        const minusButton2 = document.getElementById("minusButton2");
+        minusButton2.addEventListener("click", function() {
+            const ticketQuantity2 = document.getElementById("ticketQuantity2").value;
+            const ticketQuantityNumber2 = parseFloat(ticketQuantity2);
+            const ticketDecrease2 = ticketQuantityNumber2 - 1;
+            if (ticketDecrease2 < 0) {
+                return 0;
+            }
+            const subtotal = document.getElementById("subtotal").innerHTML;
+            const subtotalNumber = parseFloat(subtotal);
+            const subtotalDecrease2 = ticketDecrease2 * 100;
+            const vat = document.getElementById("vat").innerHTML;
+            const vatNumber = parseFloat(vat);
+            const totalVatDecrease2 = (subtotalDecrease2 / 100) * 10;
+            const totalPayment2 = document.getElementById("totalPayment").innerHTML;
+            const totalPaymentNumber2 = parseFloat(totalPayment2);
+            const finalPayment2 = subtotalDecrease2 + totalVatDecrease2;
+
+
+            document.getElementById("ticketQuantity2").value = ticketDecrease2;
+            document.getElementById("subtotal").innerHTML = subtotalDecrease2;
+            document.getElementById("vat").innerHTML = totalVatDecrease2;
+            document.getElementById("totalPayment").innerHTML = finalPayment2;
+        });
     </script>
-
-
-
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 

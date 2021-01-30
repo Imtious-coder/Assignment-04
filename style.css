@@ -144,3 +144,7 @@ a.active {
     display: flex;
     justify-content: space-between;
 }
+
+.pageLinks {
+    text-decoration: none;
+}
